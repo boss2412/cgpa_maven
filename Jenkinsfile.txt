@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/boss2412/cgpa_maven.git' // Replace with your GitHub repo URL
+                git branch: 'master', url: 'https://github.com/boss2412/cgpa_maven.git' // Replace with your GitHub repo URL
             }
         }
         
