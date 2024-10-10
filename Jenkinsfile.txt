@@ -5,6 +5,10 @@ pipeline {
         maven 'Maven(3.9.9)' // Make sure 'Maven' is configured in Jenkins
     }
     
+    parameters {
+        string(name: 'CGPA', defaultValue: '', description: 'Enter your CGPA')
+    }
+    
     stages {
         stage('Checkout') {
             steps {
