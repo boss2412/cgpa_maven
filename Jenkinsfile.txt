@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    
+    tools {
+        maven 'Maven' // Make sure 'Maven' is configured in Jenkins
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/boss2412/cgpa_maven.git' // Replace with your GitHub repo URL
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        
+        stage('Run App') {
+            steps {
+                sh 'mvn exec:java -Dexec.mainClass="com.example.App"'
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline executed successfully.'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
